@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=66", "wheel"] 
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bmra-prep"
+description = "Python package for data preparation for BMRA."
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+  {name = "Philipp Junk", email = "philipp.junk@ucd.ie"},
+]
+maintainers = [
+  {name = "Philipp Junk", email = "philipp.junk@ucd.ie"},
+]
+classifiers = [
+  "Programming Language :: Python",
+  "Typing :: Typed",
+]
+
+dependencies = [
+  "numpy >= 1.24",
+  "torch >= 2",
+  "pandas >= 1.5",
+]
+
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = [
+  "ruff",
+  "black",
+  "mypy>=1.3",
+  "pandas-stubs",
+]
+
+[project.urls]
+Repository = "https://github.com/PhilippJunk/bmra-prep"
+
+[tool.setuptools.packages.find]
+exclude = [".tox*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "bmra_prep.__version__"}
+
+[tool.ruff]
+select = ["E", "F", "W", "C", "B"]
+line-length = 88
+target-version = "py38"
